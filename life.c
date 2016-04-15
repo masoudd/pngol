@@ -145,8 +145,8 @@ int main(int argc, char *argv[]) {
 
     if (argc == 3) {
         Game_Random(game);
-        gen_from = strtol(argv[2], NULL, 10);
-        gen_to = strtol(argv[3], NULL, 10);
+        gen_from = strtol(argv[1], NULL, 10);
+        gen_to = strtol(argv[2], NULL, 10);
     }
 
     for (int i = gen_from; i <= gen_to; i++) {
