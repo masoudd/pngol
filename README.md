@@ -1,7 +1,8 @@
 PNGoL: PNG + Game of Life
 ============
 
-A command line program implementing [Game of Life][1]
+A command line program implementing [Game of Life][1].
+
 This program takes a starting generation from the input and
 outputs PNG file images of each successive generations.
 These images can be used as frames of a video to show the progress
