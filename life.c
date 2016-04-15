@@ -14,7 +14,6 @@ struct Game *Game_Init() {
     game->len = sizeof(bool) * cellcount;
     game->grid = malloc(game->len);
     game->past_grid = malloc(game->len);
-    game->quit = false;
 
     for (int i = 0; i < cellcount; i++) {
         game->grid[i] = false;
@@ -127,23 +126,28 @@ void Game_Tick(struct Game *game) {
 
 int main(int argc, char *argv[]) {
 
+    int gen_from;
+    int gen_to;
     struct Game *game;
+
     game = Game_Init();
 
-    if (argc < 4) {
+    if (argc != 4 && argc != 3) {
         printf(
-            "Usage: %s init_file gen_from gen_to\n"
-            "    init_file:    The file containing generation 0\n"
+            "Usage: %s [init_file] gen_from gen_to\n"
+            "    init_file:    The file containing generation 0,\n"
+            "                  or omit it to use a random initial state\n"
             "    gen_from:     Produce output from this generation onward\n"
             "    gen_to:       Stop generating output after this generation\n",
             argv[0]);
         return 1;
     }
 
-    int gen_from = strtol(argv[2], NULL, 10);
-    int gen_to = strtol(argv[3], NULL, 10);
-
-    Game_Random(game);
+    if (argc == 3) {
+        Game_Random(game);
+        gen_from = strtol(argv[2], NULL, 10);
+        gen_to = strtol(argv[3], NULL, 10);
+    }
 
     for (int i = gen_from; i <= gen_to; i++) {
         Game_Render(game);

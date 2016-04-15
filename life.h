@@ -8,7 +8,6 @@ struct Game {
     int len;
     bool *grid;
     bool *past_grid;
-    bool quit;
 };
 
 #endif
