@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #include <png.h>
 
@@ -140,13 +141,18 @@ int main(int argc, char *argv[]) {
             "    gen_from:     Produce output from this generation onward\n"
             "    gen_to:       Stop generating output after this generation\n",
             argv[0]);
-        return 1;
+        exit(EXIT_FAILURE);
     }
 
     if (argc == 3) {
         Game_Random(game);
+        errno = 0;
         gen_from = strtol(argv[1], NULL, 10);
         gen_to = strtol(argv[2], NULL, 10);
+        if (errno != 0) {
+            perror(NULL);
+            exit(EXIT_FAILURE);
+        }
     }
 
     for (int i = gen_from; i <= gen_to; i++) {
@@ -154,5 +160,5 @@ int main(int argc, char *argv[]) {
         Game_Tick(game);
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
