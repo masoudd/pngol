@@ -125,6 +125,17 @@ void Game_Tick(struct Game *game) {
 }
 
 
+void print_help(const char *name) {
+    printf(
+        "Usage: %s [init_file] gen_from gen_to\n"
+        "    init_file:    The file containing generation 0,\n"
+        "                  or omit it to use a random initial state\n"
+        "    gen_from:     Produce output from this generation onward\n"
+        "    gen_to:       Stop generating output after this generation\n",
+        name);
+}
+
+
 int main(int argc, char *argv[]) {
 
     int gen_from;
@@ -134,13 +145,7 @@ int main(int argc, char *argv[]) {
     game = Game_Init();
 
     if (argc != 4 && argc != 3) {
-        printf(
-            "Usage: %s [init_file] gen_from gen_to\n"
-            "    init_file:    The file containing generation 0,\n"
-            "                  or omit it to use a random initial state\n"
-            "    gen_from:     Produce output from this generation onward\n"
-            "    gen_to:       Stop generating output after this generation\n",
-            argv[0]);
+        print_help(argv[0]);
         exit(EXIT_FAILURE);
     }
 
