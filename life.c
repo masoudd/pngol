@@ -1,6 +1,7 @@
 #include "life.h"
 #include "config.h"
 
+#include <sys/random.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -25,6 +26,12 @@ struct Game *Game_Init() {
 }
 
 void Game_Random(struct Game *game) {
+    unsigned int seed;
+    if (0 >= getrandom(&seed, sizeof(seed), 0)) {
+        perror(NULL);
+        exit(EXIT_FAILURE);
+    }
+    srand(seed);
     for (int i = 0; i < WIDTH * HEIGHT; i++) {
         game->grid[i] = (rand() % 2) ? false : true;
     }
