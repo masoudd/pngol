@@ -160,6 +160,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // Don't render unwanted generations
+    for (int i = 0; i < gen_from; i++) {
+        Game_Tick(game);
+    }
+
     for (int i = gen_from; i <= gen_to; i++) {
         Game_Render(game);
         Game_Tick(game);
