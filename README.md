@@ -1,5 +1,6 @@
 PNGoL: PNG + Game of Life
 ============
+![Example](https://github.com/masoudd/pngol/blob/master/example.gif)
 
 A command line program implementing [Game of Life][1].
 
