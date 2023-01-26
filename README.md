@@ -52,6 +52,16 @@ A 10x5 example:
     0000000000
 
 
+example:
+
+    mkdir output
+    cd output
+    ../pngol 0 35 ../example_states/glider.txt
+    ../scripts/png_to_gif.sh
+
+![Glider](https://github.com/masoudd/pngol/blob/master/glider.gif)
+
+
 Configure
 ---------
 Edit `config.c`. To change the default number of cells, change `WIDTH` and `HEIGHT`, set `SCALE` to desired width of each cell in pixels.
