@@ -24,7 +24,7 @@ Make a directory for pictures:
     mkdir output
     cd output
 
-Generate pictures here from random initial state:
+Generate pictures here from random initial state with default width and height number of cells:
 
     ../pngol 0 100
 
@@ -38,9 +38,23 @@ or see `png_to_gif.sh` to make a gif.
 
 See [ffmpeg documentation][2] for more.
 
+
+Use an initial state file
+-------------------------
+A state file is an ascii text file containing `height` number of lines of `width` length made up of only `0` and `1` characters.
+
+A 10x5 example:
+
+    0010000000
+    1010000000
+    0110000000
+    0000000000
+    0000000000
+
+
 Configure
 ---------
-Edit `config.c`. To change number of cells change `WIDTH` and `HEIGHT`, set `SCALE` to desired width of each cell in pixels.
+Edit `config.c`. To change the default number of cells, change `WIDTH` and `HEIGHT`, set `SCALE` to desired width of each cell in pixels.
 
 You can also change the RGB values of background (dead cells) and foreground (alive cells).
 

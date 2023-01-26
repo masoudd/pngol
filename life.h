@@ -8,6 +8,8 @@ struct Game {
     int len;
     bool *grid;
     bool *past_grid;
+    int width;
+    int height;
 };
 
 #endif
