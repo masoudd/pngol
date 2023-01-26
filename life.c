@@ -99,11 +99,14 @@ bool check_rules(struct Game *game, int x, int y) {
         for (int j = -1; j <= 1; j++) {
             if (i == 0 && j == 0) /* we don't wanna count the cell itself */
                 continue;
-            int index = (x + i) + (game->width * (y + j));
-            if (index < 0 || index > (game->height * game->width - 1))
+            int nx = x + i;
+            int ny = y + j;
+            if (nx >= game->width || nx < 0 || ny >= game->height || ny < 0) {
                 continue;
-            if (grid[index])
+            }
+            if (grid[nx + ny * game->width]) {
                 c++;
+            }
         }
     }
 
