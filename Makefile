@@ -7,6 +7,6 @@ debug:
 	gcc $(CFLAGS) $(CLIBS) life.c config.c -g -o $@
 
 clean:
-	rm pngol debug
+	rm -f pngol debug
 
 .PHONEY: clean
